@@ -1,0 +1,28 @@
+.mainContainer {
+    background-color:#EEEEEE!important ;
+    align-items:center ;
+    justify-content: center;
+    display: flex;
+    min-height : 100vh ;
+    padding : 10px 0px;
+    font-size : 10px ;
+}
+
+h4 {
+    text-align: center ;
+    width: 100%;
+    font-weight: bolder;
+}
+.signUpButton {
+    background-color: #FFB600 !important;
+    text-transform: uppercase;
+    outline: none;
+    padding : 10px 40px !important;
+}
+
+
+@media (max-width:480px) {
+    .formContainer{
+        padding : 10px;
+    }
+}

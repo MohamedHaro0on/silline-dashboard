@@ -1,0 +1,145 @@
+.sideBarContainer {
+  position: relative;
+  .toggleSideBarBtn {
+    display: none;
+    color: #333;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+    svg{
+      font-size: 5.5rem !important;
+    }
+  }
+}
+
+.sidebar {
+  flex: 1;
+  border-right: 0.5px solid rgb(230, 227, 227);
+  min-height: 100vh;
+  position: fixed;
+  top: 0px;
+  width : 15% ; 
+  height: 100%;
+  border-left: 0.5px solid rgb(230, 227, 227);
+  z-index: 2;
+  transition: all 1s ;
+  .top {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  hr {
+    height: 0;
+    border: 0.5px solid rgb(230, 227, 227);
+  }
+
+  .center {
+    padding-left: 10px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .title {
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+        a {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          color: #222f40;
+          span {
+            font-size: 20px;
+            padding-right: 10px;
+          }
+        }
+        &:hover {
+          background-color: #de7809;
+          a {
+            span,
+            svg {
+              color: #222f40;
+            }
+          }
+        }
+
+        .icon {
+          font-size: 18px;
+        }
+
+        span {
+          font-size: 13px;
+          font-weight: 600;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .themes {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+    .colorOption {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 1px solid #222f40;
+      cursor: pointer;
+      margin: 5px;
+
+      &:nth-child(1) {
+        background-color: whitesmoke;
+      }
+      &:nth-child(2) {
+        background-color: #333;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .sidebar {
+    width: 50%;
+    background-color: #fff;
+  }
+  .toggleSideBarBtn {
+    display: block !important;
+  }
+  .overLay{
+    position: fixed ; 
+    background-color: rgba(0,0,0, .8);
+    top : 0px;
+    left : 0px ;
+    right : 0px ;
+    bottom : 0px ;
+    z-index: 1;
+    transition: all 1s ;
+  }
+  .sidebarOpen{
+    width : 50% ;
+    left : 0px ;
+  }
+  .sidebarClosed{
+    width : 0% ;
+    left : -50% ; 
+  }
+}
