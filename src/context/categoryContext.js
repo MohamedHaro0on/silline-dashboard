@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import UserContext from "./authContext";
+import UserContext from "./userContext";
 import { toast } from "react-toastify";
 import strings from "../assets/locals/locals";
 import { useNavigate } from "react-router-dom";
@@ -43,8 +43,6 @@ export const CategoriesContextProvider = ({ children }) => {
   };
 
   const deleteCategoryHandler = (id) => {
-    console.log(token);
-    console.log(id);
     axios
       .post(
         `/DeleteCategoryByID.php`,

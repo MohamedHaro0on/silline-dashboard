@@ -5,6 +5,7 @@ import CategoriesContext from "../../context/categoryContext";
 import NoItemsFound from "../../assets/images/noitems.png";
 import { Link } from "react-router-dom";
 import strings from "../../assets/locals/locals";
+import NoContent from "../../components/noContent";
 
 const Categories = () => {
   const { categories } = useContext(CategoriesContext);
@@ -23,7 +24,7 @@ const Categories = () => {
         borderBottom={"0.5px solid #e7e4e4"}
       >
         <Button className = "mainBtn" padding={3}>
-          <Link to={"/categories/add"}>{strings.addNewItem}</Link>
+          <Link to={"/categories/add"}>{strings.addNewCategory}</Link>
         </Button>
       </Grid>
       {categories && categories.length > 0 ? (
@@ -45,29 +46,7 @@ const Categories = () => {
             </Grid>
           );
         })
-      ) : (
-        <Grid
-          item
-          xs={12}
-          md={12}
-          lg={12}
-          xl={12}
-          minHeight={"80vh"}
-          alignItems={"center"}
-          display={"flex"}
-          justifyContent={"center"}
-        >
-          <Box
-            component="img"
-            sx={{
-              height: "500px",
-              width: "fit-content",
-            }}
-            alt="No Items Found"
-            src={NoItemsFound}
-          />
-        </Grid>
-      )}
+      ) : <NoContent/>}
     </Grid>
   );
 };

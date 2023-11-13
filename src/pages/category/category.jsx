@@ -147,7 +147,7 @@ export default function Category({
       <CardMedia
         component="img"
         height="194"
-        image={`http://localhost:8080//php/uploads/${CategoryPicture}`}
+        image={`https://silinbakeri.net/php/uploads/${CategoryPicture}`}
         alt={CategoryName}
         style={{ objectFit: "contain" }}
       />

@@ -17,16 +17,17 @@ import AddItem from "./pages/item/addItem/addItem";
 
 import LanguageContext from "./context/langContext";
 import DarkModeContext from "./context/darkModeContext";
-import { UserContextProvider } from "./context/authContext";
+import { UserContextProvider } from "./context/userContext";
 import { ItemsContextProvider } from "./context/itemsContext";
 import { ToastContainer } from "react-toastify";
 import Categories from "./pages/category/categories";
 import { CategoriesContextProvider } from "./context/categoryContext";
 import AddCategory from "./pages/category/addCategory/addCategory";
 import axios from "axios";
+import Kitchen from "./pages/kitchen";
+import Hall from "./pages/hall/hall";
 
-
-axios.defaults.baseURL = "http://localhost:8080//php"
+axios.defaults.baseURL = "https://silinbakeri.net/php"
 const App = () => {
   const { darkMode } = useContext(DarkModeContext);
   const { lang } = useContext(LanguageContext);
@@ -47,8 +48,10 @@ const App = () => {
             >
               <Routes>
                 <Route index exact path="/" element={<Login />} />
-                <Route exact path="/sign-up" element={<SignUp />} />
-
+                <Route
+                  path="/sign-up"
+                  element={<ProtectedRoute component={<SignUp />} />}
+                />
                 <Route
                   path="/home"
                   element={<ProtectedRoute component={<Home />} />}
@@ -79,6 +82,10 @@ const App = () => {
                   path="/categories/:id"
                   element={<ProtectedRoute component={<AddCategory />} />}
                 />
+
+                <Route exact path="/kitchen" element={<Kitchen />} />
+
+                <Route exact path="/hall" element={<Hall />} />
               </Routes>
 
               <ToastContainer />

@@ -8,6 +8,7 @@ import NoItemsFound from "../../assets/images/noitems.png";
 import Item from "./item";
 import "./items.scss";
 import CategoriesContext from "../../context/categoryContext";
+import NoContent from "../../components/noContent";
 
 const Items = () => {
   const { items } = useContext(ItemsContext);
@@ -84,29 +85,7 @@ const Items = () => {
               </Grid>
             );
           })
-        ) : (
-          <Grid
-            item
-            xs={12}
-            md={12}
-            lg={12}
-            xl={12}
-            minHeight={"80vh"}
-            alignItems={"center"}
-            display={"flex"}
-            justifyContent={"center"}
-          >
-            <Box
-              component="img"
-              sx={{
-                height: "500px",
-                width: "fit-content",
-              }}
-              alt="No Items Found"
-              src={NoItemsFound}
-            />
-          </Grid>
-        )}
+        ) : <NoContent/>}
       </Grid>
     </Grid>
   );

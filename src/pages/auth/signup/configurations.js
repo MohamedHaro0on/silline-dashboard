@@ -50,12 +50,12 @@ export const getValidationSchema = (lang) => {
 
     password: yup
       .string(strings.passwordNotString)
-      .min(8, strings.passwordLessThanMin)
+      .min(4, strings.passwordLessThanMin)
       .required(strings.passwordEmptyError),
 
     confirmPassword: yup
       .string(strings.confirmPasswordNotString)
-      .min(8, strings.confirmPasswordLessThanMin)
+      .min(4, strings.confirmPasswordLessThanMin)
       .required(strings.confirmPasswordEmptyError)
       .oneOf([yup.ref("password"), null], strings.passAndConfirmAreNotMatch),
   });

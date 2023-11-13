@@ -15,7 +15,7 @@ import Logo from "../../../assets/images/logo.png";
 import { useFormik } from "formik";
 import strings from "../../../assets/locals/locals";
 import LanguageContext from "../../../context/langContext";
-import { UserContext } from "../../../context/authContext";
+import { UserContext } from "../../../context/userContext";
 
 const LogInPage = () => {
   const { login } = useContext(UserContext);
@@ -163,12 +163,6 @@ const LogInPage = () => {
                 >
                   {strings.login}
                 </Button>
-              </Grid>
-              <Grid item xs={12} md={12} xl={12} lg={12} marginTop={2}>
-                <Typography variant="p" fontSize={"20px"}>
-                  <span>{strings.dontHaveAnAccount}</span>
-                  <Link to={"/sign-up"}> {strings.register}</Link>
-                </Typography>
               </Grid>
             </Grid>
           </Grid>

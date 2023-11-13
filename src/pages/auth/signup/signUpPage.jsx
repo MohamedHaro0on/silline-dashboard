@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-// import MenuItem from "@mui/material/MenuItem";
-import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 
 import Logo from "../../../assets/images/logo.png";
@@ -9,7 +7,7 @@ import "./signUpPage.css";
 import strings from "../../../assets/locals/locals";
 import LanguageContext from "../../../context/langContext";
 import { getInputs, getValidationSchema } from "./configurations";
-import UserContext from "../../../context/authContext";
+import UserContext from "../../../context/userContext";
 
 const SignUpPage = () => {
   const { lang } = useContext(LanguageContext);
@@ -128,12 +126,7 @@ const SignUpPage = () => {
                   {strings.register}
                 </Button>
               </Grid>
-              <Grid item xs={12} md={12} xl={12} lg={12} margin={"normal"}>
-                <Typography variant="p" fontSize={"15px"}>
-                  <span> {strings.haveAnAccount}</span>
-                  <Link to={"/"}> {strings.login}</Link>
-                </Typography>
-              </Grid>
+
             </Grid>
           </Grid>
 

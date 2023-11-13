@@ -5,15 +5,10 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 
-const FILE_SIZE = 200 * 1024;
+const FILE_SIZE = 1024 * 1024;
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
 
-//   Image,
-// Description,
-// ItemName,
-// Price,
-// category,
-// AllergyInfo,
+
 
 export const getInputs = (lang, categories) => {
   strings.setLanguage(lang);

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Button,
@@ -31,7 +31,6 @@ const AddItem = () => {
   let initialValues;
   const item = getItem(id);
   if (id && item.length > 0) {
-    console.log(item);
     initialValues = {
       ItemName: item[0].ItemName,
       Description: item[0].Description,
@@ -110,7 +109,7 @@ const AddItem = () => {
                       alt="No orders to view"
                       src={
                         id && !formik.touched.Image
-                          ? `http://localhost:8080//php/uploads/${formik.values.Image}`
+                          ? `https://silinbakeri.net/php/uploads/${formik.values.Image}`
                           : formik.values.Image !== null
                           ? URL.createObjectURL(formik.values.Image)
                           : NoImageAvailable
@@ -172,12 +171,10 @@ const AddItem = () => {
                                   onChange={
                                     type === "file"
                                       ? (e) => {
-                                          console.log(formik.values.Image);
                                           formik.setFieldValue(
                                             "Image",
                                             e.target.files[0]
                                           );
-                                          console.log(formik.values.Image);
                                         }
                                       : formik.handleChange
                                   }

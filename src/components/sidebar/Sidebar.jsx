@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import { Box, Button, Grid } from "@mui/material";
 import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import Logo from "../../assets/images/logo.png";
 import "./sidebar.scss";
 import LanguageContext from "../../context/langContext";
 import strings from "../../assets/locals/locals";
+import SoupKitchenIcon from '@mui/icons-material/SoupKitchen';
+import CategoryIcon from '@mui/icons-material/Category';
+import AddIcon from '@mui/icons-material/Add';
 
-const Sidebar = () => {
+const Sidebar = ({ Component }) => {
   const { lang } = useContext(LanguageContext);
   strings.setLanguage(lang);
 
@@ -27,15 +30,31 @@ const Sidebar = () => {
       title: strings.overView,
     },
     {
+      icon: <AddIcon className="icon" />,
+      to: "/sign-up",
+      title: strings.AddUser,
+    },
+    {
       icon: <FormatAlignJustifyIcon className="icon" />,
       to: "/items",
       title: strings.items,
     },
     {
-      icon: <DashboardIcon className="icon" />,
+      icon: <CategoryIcon className="icon" />,
       to: "/categories",
       title: strings.categories,
     },
+    {
+      icon: <SoupKitchenIcon className="icon" />,
+      to: "/kitchen",
+      title: strings.kitchen,
+    }
+    ,
+    {
+      icon: <AccountBalanceIcon className="icon" />,
+      to: "/hall",
+      title: strings.hall,
+    }
   ];
 
   return (
@@ -58,7 +77,8 @@ const Sidebar = () => {
           </span>
         </div>
         <hr />
-        <div className="center">
+        {Component && Component }
+        {!Component && <div className="center">
           <ul>
             {routes.map(({ title, icon, to }) => {
               return (
@@ -71,7 +91,8 @@ const Sidebar = () => {
               );
             })}
           </ul>
-        </div>
+        </div>}
+
       </div>
 
       <Button onClick={toggleSideBar} className="toggleSideBarBtn">

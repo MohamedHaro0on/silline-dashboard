@@ -100,7 +100,7 @@ const AddCategory = () => {
                     alt="No orders to view"
                     src={
                       id
-                        ? `http://localhost:8080//php/uploads/${formik.values.CategoryPicture}`
+                        ? `https://silinbakeri.net/php/uploads/${formik.values.CategoryPicture}`
                         : !id && formik.values.CategoryPicture
                         ? URL.createObjectURL(formik.values.CategoryPicture)
                         : NoImageAvailable

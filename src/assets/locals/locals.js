@@ -7,6 +7,9 @@ const strings = new LocalizedStrings({
     register: "إشترك",
     admin: "أدمن",
     user: "مستخدم",
+    kitchen:"المطبخ",
+    addNewCategory:"اضافه فئه جديده",
+    AddUser:"اضافه مستخدم جديده",
 
     successfullLogin : "تم تسجيل الدخول بنجاح",
     registerError : "خطأ في تسجيل الحساب",
@@ -48,7 +51,7 @@ const strings = new LocalizedStrings({
 
     overView: "نبذة عامة",
     items: "العناصر",
-
+    ItemsName : "العناصر" , 
     totalCustomers: "إجمالي العملاء",
     totalOrders: "إجمالي الطلبات",
     mostSoldItem: "العنصر الأكثر مبيعاً",
@@ -85,14 +88,39 @@ const strings = new LocalizedStrings({
 
     all: " جميع العناصر",
     filterItems: "تصفية العناصر بواسطة الصنف",
+
+    orderNumber : "رقم الطلب" ,
+    orderId : "هوية الطلب" ,
+    quantity :"الكمية" ,
+    takeAway :"تاك اواي" ,
+    totalPrice : "إجمالي السعر" , 
+    hall : "الصالة" ,
+    delete : "حذف",
+    makeItAvailable : "اضافة العنصر الي القائمة" ,
+    makeItUnavailable : "حذف العنصر من القائمة ",
+    available : "متوفر" ,
+    notAvailable : "غير متوفر" ,
+    status : "الحالة" ,
+    statusUpdatedSuccessfully : "تم تغير حالة العنصر بنجاح"  ,
+    updateOrders : "إعادة تحميل الطلبات" ,
+    finishedOrders : "الطلبات المنتهيه", 
+    notFinishedOrders : "طلبات يتم العمل فيها الان" ,
+    waiting : "لائحة الانتظار",
+
+    searchWithOrderId : "البحث عن طلب منتهى",
+    orderNumberIsNotNumberError : "من فضلك ادخل رقم الطلب",
+    orderNumberCannotBeLessThanZero : "رقم الطلب لا يمكن ان يكون سالباً" ,
+    orderDuration : "المدة المستغرقة"  , 
   },
   en: {
+    AddUser:"Add New User",
     signUp: "Sign Up",
     login: "Log In",
     register: "Register",
     admin: "Admin",
     user: "User",
-
+    kitchen:"kitchen",
+    addNewCategory:"add New Category",
     successfullLogin : "Sucessfull Login" ,
     successfullRegistration : "Successfull Registration",
     registerError :"Registration Error",
@@ -131,6 +159,9 @@ const strings = new LocalizedStrings({
     logOut: "Log Out",
     overView: "Overview",
     items: "Items",
+    ItemsName : "Order Items " , 
+    orderNumber : "Order Number ",
+    orderId : "Order Id " ,
     totalCustomers: "Total Customers",
     totalOrders: "Total Orders",
     mostSoldItem: "Most Sold Item",
@@ -167,6 +198,27 @@ const strings = new LocalizedStrings({
 
     all: "All Items",
     filterItems: "Filter Items by Category",
+
+    quantity : "Quantity" ,
+    takeAway : "Take Away",
+    totalPrice : "Total Price" ,
+
+    hall : "Hall" ,
+    delete : "Delete" ,
+    makeItUnavailable : "Make item unavailable",
+    makeItAvailable : "Make item available",
+    notAvailable  : "Not Available" , 
+    available : "Available" ,
+    status : "Status" ,
+    statusUpdatedSuccessfully : "Status Updated Succesfully" ,
+    updateOrders : "Reload Orders",
+    finishedOrders : "Finished Orders",
+    notFinishedOrders : "On going Orders",
+    waiting : "Waiting List " , 
+    searchWithOrderId : "Search for a finished order" , 
+    orderNumberIsNotNumberError : "Order Number must be a number" , 
+    orderNumberCannotBeLessThanZero : "Order Number can't bt less than 0" , 
+    orderDuration : "Order Duration "
   },
 });
 

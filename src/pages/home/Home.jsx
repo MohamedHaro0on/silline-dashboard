@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Grid } from "@mui/material";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -12,47 +10,13 @@ import LanguageContext from "../../context/langContext";
 import strings from "../../assets/locals/locals";
 import "./home.scss";
 
-const endpoints = [
-  "https://web01.usn.no/~240179/lastupdate/AllTotalCustomer.php",
-  "https://web01.usn.no/~240179/lastupdate/RoomsSelectCount.php",
-  "https://web01.usn.no/~240179/lastupdate/TotalBooking.php",
-  "https://api.github.com/users/ejirocodes/following",
-  "https://web01.usn.no/~240179/lastupdate/OverviewComplete.php",
-];
-
 // setBooking(res.data.data.reservations);
 
 const Home = () => {
   const { lang } = useContext(LanguageContext);
   strings.setLanguage(lang);
 
-  const [customers, setCustomers] = useState(null);
-  const [rooms, setRooms] = useState(null);
-  const [bookings, setBookings] = useState(null);
-  // const [overview, setOverview] = useState(null);
-  // const [following, setFollowing] = useState(null);
 
-  useEffect(() => {
-    // axios.all(endpoints.map((promise) => axios.get(promise))).then(
-    //   axios.spread((customers, rooms, totalBookings, following, overView) => {
-    //     setCustomers(customers);
-    //     setRooms(rooms);
-    //     setBookings(totalBookings);
-    //     // setFollowing(following);
-    //     // setOverview(overView);
-    //   }),
-    // );
-  }, []);
-
-  // const bookingColumns = [
-  //   { field: "ID", headerName: "ID", width: 70 },
-  //   { field: "email", headerName: "email", width: 200 },
-  //   { field: "phone", headerName: "phone", width: 100 },
-  //   { field: "full_name", headerName: "name", width: 160 },
-  //   { field: "room_name", headerName: "Room name", width: 100 },
-  //   { field: "CheckInDate", headerName: "Check in date", width: 200 },
-  //   { field: "ChectOutDate", headerName: "Check out date", width: 200 },
-  // ];
 
   const widgets = [
     {
@@ -61,7 +25,7 @@ const Home = () => {
       icon: (
         <PersonOutlinedIcon className="icon" style={{ color: "crimson" }} />
       ),
-      amount : customers && customers.data.data.users[0].TotalCustomer 
+      amount : 0
     },
     {
       title: strings.totalOrders,
@@ -74,7 +38,7 @@ const Home = () => {
           }}
         />
       ),
-      amount : rooms && rooms.data.data.floors[0].totalroom ,
+      amount : 0 
     },
     {
       title: strings.mostSoldItem,
@@ -87,7 +51,7 @@ const Home = () => {
           }}
         />
       ),
-      amount :  bookings && bookings.data.data.total_reservations ,
+      amount :  0,
     },
     {
       title: strings.totalProfit,

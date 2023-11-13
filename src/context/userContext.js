@@ -30,7 +30,7 @@ export const UserContextProvider = ({ children }) => {
 
   const login = ({ userName, password }) => {
     axios
-      .post("http://localhost:8080/login.php", {
+      .post("https://silinbakeri.net/login.php", {
         admin_username: userName,
         admin_password: password,
       })
@@ -68,7 +68,7 @@ export const UserContextProvider = ({ children }) => {
 
   const register = ({ userName, email, password }) => {
     axios
-      .post("http://localhost:8080/create_admin_api.php", {
+      .post("https://silinbakeri.net/create_admin_api.php", {
         admin_username: userName,
         admin_password: password,
         admin_email: email,
@@ -83,7 +83,6 @@ export const UserContextProvider = ({ children }) => {
           });
           navigate("/");
         } else {
-          console.log(res);
           toast.error(`Error .... ${res}`);
         }
       })

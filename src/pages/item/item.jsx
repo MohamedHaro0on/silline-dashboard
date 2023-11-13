@@ -28,10 +28,11 @@ export default function Item({
   AdminItemID,
   CategoryName,
   AllergyInfo,
+  status
 }) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const { deleteItemHandler } = React.useContext(ItemsContext);
+  const { deleteItemHandler , updateAvailabilty } = React.useContext(ItemsContext);
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -125,7 +126,15 @@ export default function Item({
                                     setOpen(false);
                                   }}
                                 >
-                                  Delete
+                                  {strings.delete}
+                                </MenuItem>
+                                <MenuItem
+                                  onClick={() => {
+                                    updateAvailabilty(AdminItemID , status);
+                                    setOpen(false);
+                                  }}
+                                >
+                                  {status === 0 ? strings.makeItAvailable : strings.makeItUnavailable}
                                 </MenuItem>
                                 {/* <MenuItem>
                                   <Link
@@ -153,7 +162,7 @@ export default function Item({
       <CardMedia
         component="img"
         height="194"
-        image={`http://localhost:8080//php/uploads/${Image}`}
+        image={`https://silinbakeri.net/php/uploads/${Image}`}
         alt={ItemName}
       />
       <CardContent>
@@ -173,6 +182,9 @@ export default function Item({
             {Price}
             <AttachMoneyIcon fontSize="15px" />
           </span>
+        </Typography>
+        <Typography paragraph>
+          <strong>{strings.status} :</strong> {status === 1 ? strings.available : strings.notAvailable}
         </Typography>
       </CardContent>
     </Card>

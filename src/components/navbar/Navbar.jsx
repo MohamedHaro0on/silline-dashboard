@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Button, Grid } from "@mui/material";
-import { UserContext } from "../../context/authContext";
+import { UserContext } from "../../context/userContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import LanguageContext from "../../context/langContext";
