@@ -111,6 +111,17 @@ const strings = new LocalizedStrings({
     orderNumberIsNotNumberError : "من فضلك ادخل رقم الطلب",
     orderNumberCannotBeLessThanZero : "رقم الطلب لا يمكن ان يكون سالباً" ,
     orderDuration : "المدة المستغرقة"  , 
+
+    adjustmentTitle : "عنوان التعديل" ,
+    adjustmentTitleIsRequired : "من فضلك ادخل عنوان التعديل" , 
+    adjustmentTitleNotString : "عنوان التعديل يجب ان يكون نصاً" , 
+    adjustmentLabelIsNotString : "العنصر يجب ان يكون نصاً",
+    adjustmentLabelIsRequired : "يجب أدخال نص العنصر" , 
+    overPriceIsNotANumber : "السعر الاضافي يجب ان يكون عدداً" , 
+    overPriceIsRequired : "يجب إدخال قيمة للسعر الاضافي",
+    overPriceMustBeBiggerThanZero : "السعر الاضافي يجب ان يكون اكبر من الصفر" , 
+
+    needToAddCategoryFirst : "يجب اضافة فئة اولاً"  , 
   },
   en: {
     AddUser:"Add New User",
@@ -218,7 +229,19 @@ const strings = new LocalizedStrings({
     searchWithOrderId : "Search for a finished order" , 
     orderNumberIsNotNumberError : "Order Number must be a number" , 
     orderNumberCannotBeLessThanZero : "Order Number can't bt less than 0" , 
-    orderDuration : "Order Duration "
+    orderDuration : "Order Duration " ,
+    adjustmentTitle : "Adjustment Title" ,
+    adjustmentTitleNotString : "Adjustment Title must be String" , 
+    needToAddCategoryFirst : "You Need to Add a category First" ,
+
+
+    adjustmentTitleIsRequired : "Adjustment Title is Required", 
+    adjustmentLabelIsNotString : "Adjustment Label Must be A String",
+    adjustmentLabelIsRequired : "Adjustment Label Is Required", 
+    overPriceIsNotANumber :  "Over Price Must be a Number", 
+    overPriceIsRequired : "Over Price is Requried",
+    overPriceMustBeBiggerThanZero : "Over Price Can't be less than or equal 0 ", 
+    
   },
 });
 

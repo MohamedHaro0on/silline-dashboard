@@ -8,8 +8,6 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 const FILE_SIZE = 1024 * 1024;
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
 
-
-
 export const getInputs = (lang, categories) => {
   strings.setLanguage(lang);
   return [
@@ -18,28 +16,24 @@ export const getInputs = (lang, categories) => {
       label: strings.itemName,
       type: "text",
       id: "itemName",
-      icon: <FaEnvelope />,
     },
     {
       name: "Description",
       label: strings.description,
       type: "text",
       id: "Description",
-      icon: <FaLock />,
     },
     {
       name: "Price",
       label: strings.price,
       type: "number",
       id: "Price",
-      icon: <AttachMoneyIcon />,
     },
     {
       name: "AllergyInfo",
       label: strings.allergy,
       type: "text",
       id: "AllergyInfo",
-      icon: <FaLock />,
     },
     {
       name: "CategoryID",
@@ -47,14 +41,12 @@ export const getInputs = (lang, categories) => {
       type: "select",
       options: categories && categories.map((el) => el),
       id: "CategoryID",
-      icon: <Diversity2Icon />,
     },
     {
       name: "Image",
       label: strings.itemImage,
       type: "file",
       id: "Image",
-      icon: <DriveFolderUploadOutlinedIcon />,
       accept: "image/*",
     },
   ];
@@ -65,15 +57,15 @@ export const getValidationSchema = (lang, categories) => {
 
   return yup.object({
     ItemName: yup
-      .string(strings.itemNameIsEmpty)
-      .required(strings.itemNameIsNotStringError),
+      .string(strings.itemNameIsNotStringError)
+      .required(strings.itemNameIsEmpty),
     Description: yup
       .string(strings.descriptionIsNotStringError)
       .required(strings.descriptionIsEmptyError),
     AllergyInfo: yup
       .string(strings.allergyIsNotString)
       .required(strings.allergyIsEmptyError),
-
+    adjustmentTitle: yup.string(strings.adjustmentTitleNotString),
     Price: yup
       .number(strings.priceIsNotNumber)
       .required(strings.priceIsEmpty)
@@ -98,5 +90,23 @@ export const getValidationSchema = (lang, categories) => {
         "Unsupported Format",
         (value) => value && SUPPORTED_FORMATS.includes(value.type)
       ),
+
+    Adjustment: yup.array().of(
+      yup.object().shape({
+        title: yup.string(strings.adjustmentTitleNotString).required(strings.adjustmentTitleIsRequired),
+        adjustmentInfo: yup.array().of(
+          yup.object().shape({
+            label: yup
+              .string(strings.adjustmentLabelIsNotString)
+              .required(strings.adjustmentLabelIsRequired),
+
+            overPrice: yup
+              .number(strings.overPriceIsNotANumber)
+              .required(strings.overPriceIsRequired)
+              .min(0, strings.overPriceMustBeBiggerThanZero),
+          })
+        ),
+      })
+    ),
   });
 };

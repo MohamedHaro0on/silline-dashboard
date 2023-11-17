@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 import strings from "../assets/locals/locals";
 import { useNavigate } from "react-router-dom";
 import LanguageContext from "./langContext";
-import { compileString } from "sass";
 
 const ItemsContext = createContext([]);
 
 export const ItemsContextProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const { token } = useContext(UserContext);
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ export const ItemsContextProvider = ({ children }) => {
       })
       .then((res) => {
         setItems(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         toast.error(` error items.... ${err.message} `, {
@@ -72,7 +73,7 @@ export const ItemsContextProvider = ({ children }) => {
         });
       });
   };
-  const editItem = () => { };
+  const editItem = () => {};
 
   const getItem = (id) => {
     return items.filter((el) => el.AdminItemID == id);
@@ -85,7 +86,9 @@ export const ItemsContextProvider = ({ children }) => {
     Image,
     CategoryID,
     AllergyInfo,
+    Adjustment,
   }) => {
+    setLoading(true);
     let data = new FormData();
     data.append("Price", Price);
     data.append("Description", Description);
@@ -95,7 +98,22 @@ export const ItemsContextProvider = ({ children }) => {
     data.append("file", Image);
     data.append("status", 0);
     data.append("best_seller", 1);
-
+    data.append(
+      "title",
+      Adjustment.map((el) => el.title)
+    );
+    data.append(
+      "price_adj",
+      JSON.stringify(
+        Adjustment.map((el) => el.adjustmentInfo.map((i) => i.overPrice))
+      )
+    );
+    data.append(
+      "option_adj",
+      JSON.stringify(
+        Adjustment.map((el) => el.adjustmentInfo.map((i) => i.label))
+      )
+    );
     axios
       .post("/insertItem_admin_api.php", data, {
         headers: {
@@ -103,6 +121,7 @@ export const ItemsContextProvider = ({ children }) => {
         },
       })
       .then((res) => {
+        setLoading(false);
         toast.success(`${strings.itemAddedSuccessfully}`, {
           position:
             lang === "ar" ? toast.POSITION.TOP_LEFT : toast.POSITION.TOP_RIGHT,
@@ -119,25 +138,30 @@ export const ItemsContextProvider = ({ children }) => {
   };
 
   const updateAvailabilty = (id, status) => {
-    axios.post("/UpdateStatus.php", {
-      "AdminItemID": id,
-      "new_status": status === 0 ? 1 : 0,
-    },
-      {
-        headers: {
-          Authorization: token,
+    axios
+      .post(
+        "/UpdateStatus.php",
+        {
+          AdminItemID: id,
+          new_status: status === 0 ? 1 : 0,
         },
-      }
-    ).then(res => {
-      getItems();
-      toast.success(`${strings.statusUpdatedSuccessfully}`, {
-        position:
-          lang === "ar" ? toast.POSITION.TOP_LEFT : toast.POSITION.TOP_RIGHT,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((res) => {
+        getItems();
+        toast.success(`${strings.statusUpdatedSuccessfully}`, {
+          position:
+            lang === "ar" ? toast.POSITION.TOP_LEFT : toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    }).catch(err => {
-      console.log(err);
-    })
-  }
+  };
   return (
     <ItemsContext.Provider
       value={{
@@ -147,6 +171,7 @@ export const ItemsContextProvider = ({ children }) => {
         getItem,
         addItem,
         updateAvailabilty,
+        loading,
       }}
     >
       {children}

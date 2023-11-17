@@ -112,7 +112,6 @@ const Kitchen = () => {
                   label={strings.searchWithorderNumber}
                   placeholder={strings.searchWithorderNumber}
                   margin="normal"
-                  value={formik.values.orderNumber}
                   onChange={(e) => handleChange(e)}
                   onSubmit={formik.handleSubmit}
                   onBlur={formik.handleBlur}
@@ -137,7 +136,7 @@ const Kitchen = () => {
               <Grid item xs={12} sm={12} lg={12} xl={12} md={12} border={"solid 1px #eee"}>
                 <Grid container>
                   {
-                    notFinishedOrders.map((el) => <Grid key={el.OrderNumber} item xs={12} sm={12} md={6} lg={4} xl={3} padding={1}> <Order {...el} /> </Grid>)
+                    notFinishedOrders.map((el) => <Grid key={el.OrderID} item xs={12} sm={12} md={6} lg={4} xl={3} padding={1}> <Order {...el} /> </Grid>)
                   }
                 </Grid>
               </Grid>

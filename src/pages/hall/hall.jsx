@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { useContext, useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
 
@@ -22,9 +23,9 @@ const Hall = () => {
 
     return (
 
-      <Grid container justifyContent={"center"} alignItems={"center"} padding={3} >
+      <Grid container justifyContent={"center"} alignItems={"center"} >
 
-        {notFinishedOrders && notFinishedOrders.length > 0 && <Grid item xs={12} sm={12} lg={5} xl={5} border={"solid 2px #000"} className="hallList">
+        {notFinishedOrders && notFinishedOrders.length > 0 && <Grid item xs={12} sm={12} lg={5} xl={6} border={"solid 2px #000"} className="hallList">
           <Grid container justifyContent={"space-between"} >
             <Grid item xs={12} sm={12} md={12} bgcolor={"black"} color={"white"} padding = {2} display={"flex"} alignItems={"center"}>
               <Typography variant="h4"> {"preparation of orders   جاري التسليم "} </Typography>
@@ -49,7 +50,7 @@ const Hall = () => {
           </Grid>
         </Grid>
         }
-        {finishedOrders && finishedOrders.length > 0 && <Grid item xs={12} sm={12} lg={5} xl={5} border={"solid 2px #000"} className="finishedList">
+        {finishedOrders && finishedOrders.length > 0 && <Grid item xs={12} sm={12} lg={5} xl={6} border={"solid 2px #000"} className="finishedList">
           <Grid container padding={3} justifyContent={"space-between"} >
             <Grid item xs={12} sm={12} md={12}  padding = {2} >
               <Typography variant="h4"> {"Ready To Collect    جاهز للتسليم "} </Typography>
