@@ -143,7 +143,7 @@ export const ItemsContextProvider = ({ children }) => {
         "/UpdateStatus.php",
         {
           AdminItemID: id,
-          new_status: status === 0 ? 1 : 0,
+          new_status: status == 0 ? 1 : 0,
         },
         {
           headers: {

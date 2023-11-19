@@ -22,7 +22,8 @@ const Items = () => {
     if (cat === "all") {
       setDisplayedItems(items);
     } else {
-      setDisplayedItems(items.filter((el) => el.CategoryID === cat));
+      // eslint-disable-next-line eqeqeq
+      setDisplayedItems(items.filter((el) => el.CategoryID == cat));
     }
   };
 

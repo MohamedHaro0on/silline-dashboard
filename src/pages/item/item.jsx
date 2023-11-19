@@ -134,7 +134,7 @@ export default function Item({
                                     setOpen(false);
                                   }}
                                 >
-                                  {status === 0 ? strings.makeItAvailable : strings.makeItUnavailable}
+                                  {status == 0 ? strings.makeItAvailable : strings.makeItUnavailable}
                                 </MenuItem>
                                 {/* <MenuItem>
                                   <Link
@@ -184,7 +184,8 @@ export default function Item({
           </span>
         </Typography>
         <Typography paragraph>
-          <strong>{strings.status} :</strong> {status === 1 ? strings.available : strings.notAvailable}
+          {console.log(status)}
+          <strong>{strings.status} :</strong> {status == 1 ? strings.available : strings.notAvailable}
         </Typography>
       </CardContent>
     </Card>
