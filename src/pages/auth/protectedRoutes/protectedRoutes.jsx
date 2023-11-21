@@ -11,7 +11,6 @@ const ProtectedRoute = ({
   ...rest
 }) => {
   const user = useContext(UserContext);
-
   if (user.isAuth && user.token) {
     return (
       <Grid container>
@@ -21,14 +20,14 @@ const ProtectedRoute = ({
             <Grid item xs={12} md={12} lg={12}>
               <Navbar />
             </Grid>
-            <Grid item xs={12} lg={12} md={12}>
+            <Grid item xs={12} lg={12} md={12} {...rest}>
               {Component}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
     );
-  } else if (!user.isAuth) {
+  } else if (!user.isAuth || !user.token) {
     user.logout();
     return (
         <NotAuthorized/>

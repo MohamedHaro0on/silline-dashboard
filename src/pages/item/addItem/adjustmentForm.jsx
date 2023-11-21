@@ -22,10 +22,11 @@ const AdjustmentInfo = ({ adjustmentIndex, adjustmentInfoHelpers, adjustmentHelp
             adjustmentHelper.remove(0);
         }
     }
+
     return (
         <Grid container>
             {values.Adjustment[adjustmentIndex].adjustmentInfo.map(({ id }, index) => (
-                <Grid container  justifyContent={"space-between"} marginTop={2} alignItems={"center"} display={"flex"} key={id} marginBottom={3} >
+                <Grid container justifyContent={"space-between"} marginTop={2} alignItems={"center"} display={"flex"} key={id} marginBottom={3} >
                     <Grid item xs={7} sm={5} md={4}>
                         <TextField
                             error={
@@ -127,7 +128,7 @@ const AdjustmentInfo = ({ adjustmentIndex, adjustmentInfoHelpers, adjustmentHelp
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={4} sm = {3} padding={1} display="flex" alignItems={"center"} justifyContent={"space-between"} height={"100%"}>
+                    <Grid item xs={4} sm={3} padding={1} display="flex" alignItems={"center"} justifyContent={"space-between"} height={"100%"}>
                         {values.Adjustment[adjustmentIndex].adjustmentInfo.length > 1 &&
                             <Button color="error" variant="outlined" onClick={() => handleRemoveAdjustmentInfo(adjustmentIndex, index)} >
                                 <FaTrash fontSize={25} />
@@ -228,7 +229,7 @@ const Adjustment = ({ adjustmentHelper }) => {
                     </Grid>
                     <Grid item xs={12} sm={12}>
                         <Button color="warning" variant="outlined" onClick={() => {
-                            adjustmentHelper.push({ title: "", adjustmentInfo: [{ overPrice: null, label: "", id: uniqid() }] , id : uniqid() })
+                            adjustmentHelper.push({ title: "", adjustmentInfo: [{ overPrice: null, label: "", id: uniqid() }], id: uniqid() })
                         }}>
                             add new adjustment
                         </Button>

@@ -76,7 +76,7 @@ export const ItemsContextProvider = ({ children }) => {
   const editItem = () => {};
 
   const getItem = (id) => {
-    return items.filter((el) => el.AdminItemID == id);
+    return items.filter((el) => el.AdminItemID === id);
   };
 
   const addItem = ({
@@ -137,6 +137,41 @@ export const ItemsContextProvider = ({ children }) => {
       });
   };
 
+  const addAdjustment = ({ AdminItemID, ItemName, Adjustment }) => {
+    console.log(Adjustment.map((el) =>
+    el.adjustmentInfo.map((i) => i.overPrice)));
+    axios
+      .post(
+        "/addAdjusment.php",
+        {
+          AdminItemID,
+          Title: JSON.stringify(Adjustment.map((el) => el.title)),
+          ItemName,
+          Price: Adjustment.map((el) =>
+          el.adjustmentInfo.map((i) => i.overPrice)
+        ),
+          Option: JSON.stringify(Adjustment.map((el) => el.adjustmentInfo.map((i) => i.label))),
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success(`${strings.adjustmentsAddedSuccesfully}`, {
+          position:
+            lang === "ar" ? toast.POSITION.TOP_LEFT : toast.POSITION.TOP_RIGHT,
+        });
+        getItems();
+        navigate("/items");
+      })
+      .catch((err) => {
+        toast.error(` ${strings.addItemError} .... ${err.message} `, {
+          position:
+            lang === "ar" ? toast.POSITION.TOP_LEFT : toast.POSITION.TOP_RIGHT,
+        });      });
+  };
   const updateAvailabilty = (id, status) => {
     axios
       .post(
@@ -172,6 +207,7 @@ export const ItemsContextProvider = ({ children }) => {
         addItem,
         updateAvailabilty,
         loading,
+        addAdjustment,
       }}
     >
       {children}

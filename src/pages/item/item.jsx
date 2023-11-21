@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -16,7 +17,7 @@ import {
 } from "@mui/material";
 import { GridMoreVertIcon } from "@mui/x-data-grid";
 import ItemsContext from "../../context/itemsContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import strings from "../../assets/locals/locals";
 
@@ -32,7 +33,9 @@ export default function Item({
 }) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const { deleteItemHandler , updateAvailabilty } = React.useContext(ItemsContext);
+  const { deleteItemHandler, updateAvailabilty } = React.useContext(ItemsContext);
+  const navigate = useNavigate();
+  
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -130,10 +133,11 @@ export default function Item({
                                 </MenuItem>
                                 <MenuItem
                                   onClick={() => {
-                                    updateAvailabilty(AdminItemID , status);
+                                    updateAvailabilty(AdminItemID, status);
                                     setOpen(false);
                                   }}
                                 >
+
                                   {status == 0 ? strings.makeItAvailable : strings.makeItUnavailable}
                                 </MenuItem>
                                 {/* <MenuItem>
@@ -146,6 +150,14 @@ export default function Item({
                                     edit
                                   </Link>
                                 </MenuItem> */}
+
+                                <MenuItem onClick={() => {
+                                  navigate('/items/add-adjustment', { state: { AdminItemID, ItemName } });
+                                }}>
+                                  <Link>
+                                    {strings.addAdjustments}
+                                  </Link>
+                                </MenuItem>
                               </MenuList>
                             }
                           </ClickAwayListener>

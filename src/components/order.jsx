@@ -10,6 +10,9 @@ const Order = ({
   SelectedItemNames,
   Status,
   TimeDifference,
+  adjustments,
+  SelectedItems
+
 }) => {
   const { changeStatus } = useContext(OrdersContext);
   const { lang } = useContext(LanguageContext);
@@ -27,6 +30,7 @@ const Order = ({
     hours = Math.floor((TimeDifference % 86400) / 3600);
     days = Math.floor((TimeDifference % (86400 * 30)) / 86400);
   }
+
   return (
     <Button fullWidth onClick={() => changeStatus(OrderID, Status)}>
       <Card sx={{ minWidth: "100%" }} className="hallCard">
@@ -40,59 +44,37 @@ const Order = ({
             {OrderNumber}
           </Typography>
           <Typography variant="h5" component="div"></Typography>
-          {SelectedItemNames &&
-            SelectedItemNames.map((items, index) => {
+          {SelectedItems &&
+            SelectedItems.map(({ ItemName, Adjustments }, index) => {
               return (
-                <Grid container textAlign={"start"} key={`${OrderID} ${items}`}>
-                  {items &&
-                    items.map((el) => {
-                      if (typeof el === "object") {
-                        return (
-                          <Grid
-                            container
-                            borderBottom={"1px solid #eee"}
-                            padding={2}
-                            key={el}
-                          >
-                            {el.map((item) => {
-                              return (
-                                <React.Fragment key={item}>
-                                  <Grid item xs={2} lg={2}>
-                                    {" "}
-                                    {JSON.parse(Quantity)[index]}{" "}
-                                  </Grid>
-                                  <Grid item xs={10} lg={10}>
-                                    {" "}
-                                    <Typography variant="p">
-                                      {" "}
-                                      {item}{" "}
-                                    </Typography>
-                                  </Grid>
-                                </React.Fragment>
-                              );
-                            })}
-                          </Grid>
-                        );
-                      } else {
-                        return (
-                          <Grid
-                            container
-                            key={el}
-                            borderBottom={"1px solid #eee"}
-                            padding={2}
-                          >
-                            <Grid item xs={2} lg={2}>
-                              {" "}
-                              {JSON.parse(Quantity)[index]}{" "}
-                            </Grid>
-                            <Grid item xs={10} lg={10}>
-                              {" "}
-                              <Typography variant="p"> {el} </Typography>
-                            </Grid>
-                          </Grid>
-                        );
-                      }
-                    })}
+                <Grid container textAlign={"start"} key={`${OrderID} ${ItemName}`}>
+                  <Grid
+                    container
+                    borderBottom={"1px solid #eee"}
+                    padding={2}
+                    key={ItemName}
+                  >
+                    <Grid item xs={2} lg={2}>
+                      {" "}
+                      {JSON.parse(Quantity)[index]}{" "}
+                    </Grid>
+                    <Grid item xs={10} lg={10}>
+                      {" "}
+                      <Typography variant="p">
+                        {" "}
+                        {ItemName}{" "}
+                        <ul>
+                          {Adjustments && Adjustments.map(el => {
+                            return (
+                              <li key={el}> {el} </li>
+                            )
+                          })}
+                        </ul>
+                      </Typography>
+                    </Grid>
+
+
+                  </Grid>
                 </Grid>
               );
             })}

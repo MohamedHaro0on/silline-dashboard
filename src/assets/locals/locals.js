@@ -121,7 +121,9 @@ const strings = new LocalizedStrings({
     overPriceIsRequired : "يجب إدخال قيمة للسعر الاضافي",
     overPriceMustBeBiggerThanZero : "السعر الاضافي يجب ان يكون اكبر من الصفر" , 
 
-    needToAddCategoryFirst : "يجب اضافة فئة اولاً"  , 
+    needToAddCategoryFirst : "يجب اضافة فئة اولاً"  ,
+    addAdjustments : "قم بإضافة تعديلات  ",
+    adjustmentsAddedSuccesfully : "تم إضافة التعديلات بنجاح"
   },
   en: {
     AddUser:"Add New User",
@@ -240,7 +242,9 @@ const strings = new LocalizedStrings({
     adjustmentLabelIsRequired : "Adjustment Label Is Required", 
     overPriceIsNotANumber :  "Over Price Must be a Number", 
     overPriceIsRequired : "Over Price is Requried",
-    overPriceMustBeBiggerThanZero : "Over Price Can't be less than or equal 0 ", 
+    overPriceMustBeBiggerThanZero : "Over Price Can't be less than or equal 0 ",
+    addAdjustments : "Add Adjustments",
+    adjustmentsAddedSuccesfully : "Adjustments Added Successfully",
     
   },
 });

@@ -26,13 +26,13 @@ import AddCategory from "./pages/category/addCategory/addCategory";
 import axios from "axios";
 import Kitchen from "./pages/kitchen";
 import Hall from "./pages/hall/hall";
+import AddAdjustments from "./pages/item/addItem/addAdjustments";
 
-axios.defaults.baseURL = "https://silinbakeri.net/php"
+axios.defaults.baseURL = "https://silinbakeri.net/php";
 const App = () => {
   const { darkMode } = useContext(DarkModeContext);
   const { lang } = useContext(LanguageContext);
   strings.setLanguage(lang);
-
 
   return (
     <BrowserRouter>
@@ -56,7 +56,6 @@ const App = () => {
                   path="/home"
                   element={<ProtectedRoute component={<Home />} />}
                 />
-
                 <Route
                   path="/items"
                   element={<ProtectedRoute component={<Items />} />}
@@ -66,10 +65,14 @@ const App = () => {
                   element={<ProtectedRoute component={<AddItem />} />}
                 />
                 <Route
+                  path="/items/add-adjustment"
+                  element={<ProtectedRoute component={<AddAdjustments />} />}
+                />
+
+                <Route
                   path="/items/:id"
                   element={<ProtectedRoute component={<AddItem />} />}
                 />
-
                 <Route
                   path="/categories"
                   element={<ProtectedRoute component={<Categories />} />}
@@ -84,7 +87,6 @@ const App = () => {
                 />
 
                 <Route exact path="/kitchen" element={<Kitchen />} />
-
                 <Route exact path="/hall" element={<Hall />} />
               </Routes>
 

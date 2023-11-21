@@ -73,7 +73,7 @@ export const getValidationSchema = (lang, categories) => {
 
     CategoryID: yup
       .mixed()
-      // .oneOf(categories && categories.map((el) => el.CategoryID))
+      .oneOf(categories && categories.map((el) => el.CategoryID))
       .defined()
       .required(strings.categoryIsEmpty),
 
@@ -91,6 +91,31 @@ export const getValidationSchema = (lang, categories) => {
         (value) => value && SUPPORTED_FORMATS.includes(value.type)
       ),
 
+    Adjustment: yup.array().of(
+      yup.object().shape({
+        title: yup.string(strings.adjustmentTitleNotString).required(strings.adjustmentTitleIsRequired),
+        adjustmentInfo: yup.array().of(
+          yup.object().shape({
+            label: yup
+              .string(strings.adjustmentLabelIsNotString)
+              .required(strings.adjustmentLabelIsRequired),
+
+            overPrice: yup
+              .number(strings.overPriceIsNotANumber)
+              .required(strings.overPriceIsRequired)
+              .min(0, strings.overPriceMustBeBiggerThanZero),
+          })
+        ),
+      })
+    ),
+  });
+};
+
+
+export const getAddAdjustmentValidaiton = (lang) => {
+  strings.setLanguage(lang);
+
+  return yup.object({
     Adjustment: yup.array().of(
       yup.object().shape({
         title: yup.string(strings.adjustmentTitleNotString).required(strings.adjustmentTitleIsRequired),
