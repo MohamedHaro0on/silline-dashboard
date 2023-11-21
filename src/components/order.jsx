@@ -55,14 +55,15 @@ const Order = ({
                     key={ItemName}
                   >
                     <Grid item xs={2} lg={2}>
-                      {" "}
-                      {JSON.parse(Quantity)[index]}{" "}
+                      
+                      {JSON.parse(Quantity)[index]}
                     </Grid>
                     <Grid item xs={10} lg={10}>
-                      {" "}
+                      
                       <Typography variant="p">
-                        {" "}
-                        {ItemName}{" "}
+                        <strong>
+                        {ItemName}
+                        </strong>
                         <ul>
                           {Adjustments && Adjustments.map(el => {
                             return (
@@ -93,7 +94,7 @@ const Order = ({
         >
           <Typography variant="p">{strings.orderDuration} :</Typography>
           <Typography variant="p">
-            {` ${days} D : ${hours} H:  : ${minutes}  M: ${seconds} S`}{" "}
+            {` ${days} D : ${hours} H:  : ${minutes}  M: ${seconds} S`}
           </Typography>
         </Grid>
       </Card>
